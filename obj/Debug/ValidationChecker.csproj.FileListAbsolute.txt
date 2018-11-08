@@ -1,0 +1,15 @@
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\bin\Debug\ValidationChecker.exe.config
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\bin\Debug\ValidationChecker.exe
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\bin\Debug\ValidationChecker.pdb
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\obj\Debug\ValidationChecker.csprojAssemblyReference.cache
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\obj\Debug\ValidationChecker.Properties.Resources.resources
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\obj\Debug\ValidationChecker.csproj.GenerateResource.cache
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\obj\Debug\ValidationChecker.csproj.CoreCompileInputs.cache
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\obj\Debug\ValidationChecker.exe
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\obj\Debug\ValidationChecker.pdb
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\bin\Debug\EPPlus.dll
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\bin\Debug\EPPlus.xml
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\obj\Debug\ValidationChecker.csproj.CopyComplete
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\obj\Debug\ValidationChecker.Settings.resources
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\obj\Debug\ValidationChecker.MainWindow.resources
+C:\Users\Rafal\source\repos\ValidationChecker\ValidationChecker\obj\Debug\ValidationChecker.Report.resources

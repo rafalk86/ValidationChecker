@@ -166,7 +166,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sprawdzanie plików (by Rafal Kluzinski)";
+            this.Text = "Sprawdzanie plików";
             this.validationGroup.ResumeLayout(false);
             this.validationGroup.PerformLayout();
             this.ResumeLayout(false);

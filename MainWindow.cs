@@ -58,8 +58,8 @@ namespace ValidationChecker
                 progressBar.Visible = true;
                 launcherButton.Enabled = false;
 
-                Properties.Settings.Default["amountCheck"] = amountsCheckbox.Checked;
-                Properties.Settings.Default["accountCheck"] = accountsCheckbox.Checked;
+                Properties.Settings.Default.amountCheck= amountsCheckbox.Checked;
+                Properties.Settings.Default.accountCheck = accountsCheckbox.Checked;
                 Properties.Settings.Default.Save();
 
                 Thread task = new Thread(new ThreadStart(() =>
@@ -72,14 +72,14 @@ namespace ValidationChecker
                             {
                                 ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
 
-                                double curVal = Math.Round((double)worksheet.Cells[Properties.Settings.Default["currency"].ToString()].Value, 2);
-                                double plnVal = Math.Round((double)worksheet.Cells[Properties.Settings.Default["amount"].ToString()].Value, 2);
+                                double curVal = Math.Round((double)worksheet.Cells[Properties.Settings.Default.currency.ToString()].Value, 2);
+                                double plnVal = Math.Round((double)worksheet.Cells[Properties.Settings.Default.amount.ToString()].Value, 2);
                                 
                                 double sumCurVal = Math.Round((double)worksheet.Cells[LastUsedRow(worksheet), 3].Value, 2);
                                 double sumPlnVal = Math.Round((double)worksheet.Cells[LastUsedRow(worksheet), 4].Value, 2);
 
                                 string number = worksheet.Cells["C1"].Value.ToString();
-                                string desc = Regex.Replace(worksheet.Cells[Properties.Settings.Default["description"].ToString()].Value.ToString(), "[^0-9.+-]", "");
+                                string desc = Regex.Replace(worksheet.Cells[Properties.Settings.Default.description.ToString()].Value.ToString(), "[^0-9.+-]", "");
 
                                 int descMonth = Convert.ToInt32(desc.Substring(desc.Length - 7, 2));
 

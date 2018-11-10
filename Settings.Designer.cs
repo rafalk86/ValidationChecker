@@ -70,6 +70,7 @@
             this.currency.Name = "currency";
             this.currency.Size = new System.Drawing.Size(40, 20);
             this.currency.TabIndex = 3;
+            this.currency.Text = Properties.Settings.Default.currency;
             // 
             // amount
             // 
@@ -77,6 +78,7 @@
             this.amount.Name = "amount";
             this.amount.Size = new System.Drawing.Size(40, 20);
             this.amount.TabIndex = 4;
+            this.amount.Text = Properties.Settings.Default.amount;
             // 
             // description
             // 
@@ -84,6 +86,7 @@
             this.description.Name = "description";
             this.description.Size = new System.Drawing.Size(40, 20);
             this.description.TabIndex = 5;
+            this.description.Text = Properties.Settings.Default.description;
             // 
             // acceptButton
             // 

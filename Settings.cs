@@ -18,9 +18,9 @@ namespace ValidationChecker
             }
             else
             {
-                Properties.Settings.Default["currency"] = currency.Text;
-                Properties.Settings.Default["amount"] = amount.Text;
-                Properties.Settings.Default["description"] = description.Text;
+                Properties.Settings.Default.currency = currency.Text;
+                Properties.Settings.Default.amount = amount.Text;
+                Properties.Settings.Default.description = description.Text;
                 Properties.Settings.Default.Save();
                 Close();
             }

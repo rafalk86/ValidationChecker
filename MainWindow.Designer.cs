@@ -66,6 +66,7 @@
             // accountsCheckbox
             // 
             this.accountsCheckbox.AutoSize = true;
+            this.accountsCheckbox.Checked = Properties.Settings.Default.accountCheck;
             this.accountsCheckbox.Location = new System.Drawing.Point(15, 30);
             this.accountsCheckbox.Name = "accountsCheckbox";
             this.accountsCheckbox.Size = new System.Drawing.Size(78, 17);
@@ -76,6 +77,7 @@
             // amountsCheckbox
             // 
             this.amountsCheckbox.AutoSize = true;
+            this.amountsCheckbox.Checked = Properties.Settings.Default.amountCheck;
             this.amountsCheckbox.Location = new System.Drawing.Point(103, 30);
             this.amountsCheckbox.Name = "amountsCheckbox";
             this.amountsCheckbox.Size = new System.Drawing.Size(100, 17);

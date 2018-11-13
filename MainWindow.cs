@@ -66,36 +66,28 @@ namespace ValidationChecker
                 {
                     for (int i = 0; i < files.Length; i++)
                     {
-                        try
+                        using (ExcelPackage package = new ExcelPackage(new FileInfo(files[i])))
                         {
-                            using (ExcelPackage package = new ExcelPackage(new FileInfo(files[i])))
-                            {
-                                ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+                            ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
 
-                                double curVal = Math.Round((double)worksheet.Cells[Properties.Settings.Default.currency.ToString()].Value, 2);
-                                double plnVal = Math.Round((double)worksheet.Cells[Properties.Settings.Default.amount.ToString()].Value, 2);
-                                
-                                double sumCurVal = Math.Round((double)worksheet.Cells[LastUsedRow(worksheet), 3].Value, 2);
-                                double sumPlnVal = Math.Round((double)worksheet.Cells[LastUsedRow(worksheet), 4].Value, 2);
+                            double curVal = Math.Round((double)worksheet.Cells[Properties.Settings.Default.currency.ToString()].Value, 2);
+                            double plnVal = Math.Round((double)worksheet.Cells[Properties.Settings.Default.amount.ToString()].Value, 2);
 
-                                string number = worksheet.Cells["C1"].Value.ToString();
-                                string desc = Regex.Replace(worksheet.Cells[Properties.Settings.Default.description.ToString()].Value.ToString(), "[^0-9.+-]", "");
+                            double sumCurVal = Math.Round((double)worksheet.Cells[LastUsedRow(worksheet), 3].Value, 2);
+                            double sumPlnVal = Math.Round((double)worksheet.Cells[LastUsedRow(worksheet), 4].Value, 2);
 
-                                int descMonth = Convert.ToInt32(desc.Substring(desc.Length - 7, 2));
+                            string number = worksheet.Cells["C1"].Value.ToString();
+                            string desc = Regex.Replace(worksheet.Cells[Properties.Settings.Default.description.ToString()].Value.ToString(), "[^0-9.+-]", "");
 
-                                CreateReport(number, CompareAmounts(curVal, plnVal, sumCurVal, sumPlnVal),
-                                    CompareAccounts(worksheet, descMonth, LastUsedRow(worksheet) - 2));
-                            }
-                            Invoke(new Action(() =>
-                            {
-                                progressBar.Value = (i + 1) * 100 / files.Length;
-                            }));
+                            int descMonth = Convert.ToInt32(desc.Substring(desc.Length - 7, 2));
+
+                            CreateReport(number, CompareAmounts(curVal, plnVal, sumCurVal, sumPlnVal),
+                                CompareAccounts(worksheet, descMonth, LastUsedRow(worksheet) - 2));
                         }
-                        catch (NullReferenceException)
+                        Invoke(new Action(() =>
                         {
-                            Debug.WriteLine("Pusta komórka");
-                            continue;
-                        }
+                            progressBar.Value = (i + 1) * 100 / files.Length;
+                        }));
                     }
                     Invoke(new Action(() =>
                     {
@@ -151,22 +143,26 @@ namespace ValidationChecker
         private string CompareAccounts(ExcelWorksheet sheet, int descMonth, int limit)
         {
             string match = "";
+            string acc = "";
             int marginMonth = 0;
 
             if (accountsCheckbox.Checked)
             {
                 for (int i = 3; i < limit; i++)
                 {
-                    string acc = sheet.Cells[i, 4].Value.ToString();
-
-                    if (acc.Substring(0, 1) == "6" && acc.Substring(0, 3) != "630")
+                    if (sheet.Cells[i, 4].Value != null)
                     {
-                        marginMonth = Convert.ToInt32(acc.Substring(acc.IndexOf("-") + 1, acc.LastIndexOf("-") - acc.IndexOf("-") - 1));
+                        acc = sheet.Cells[i, 4].Value.ToString();
 
-                        if (marginMonth < descMonth || marginMonth > descMonth + 1)
+                        if (acc.Substring(0, 1) == "6" && acc.Substring(0, 3) != "630")
                         {
-                            match = "Niezgodne konta";
-                            break;
+                            marginMonth = Convert.ToInt32(acc.Substring(acc.IndexOf("-") + 1, acc.LastIndexOf("-") - acc.IndexOf("-") - 1));
+
+                            if ((marginMonth < descMonth || marginMonth > descMonth + 1) && marginMonth != 0)
+                            {
+                                match = "Niezgodne konta";
+                                break;
+                            }
                         }
                     }
                 }

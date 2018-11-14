@@ -149,12 +149,12 @@ namespace ValidationChecker
             if (accountsCheckbox.Checked)
             {
                 for (int i = 3; i < limit; i++)
-                {
+                { 
                     if (sheet.Cells[i, 4].Value != null)
                     {
                         acc = sheet.Cells[i, 4].Value.ToString();
 
-                        if (acc.Substring(0, 1) == "6" && acc.Substring(0, 3) != "630")
+                        if (acc.Length >= 3 && acc.Substring(0, 1) == "6" && acc.Substring(0, 3) != "630")
                         {
                             marginMonth = Convert.ToInt32(acc.Substring(acc.IndexOf("-") + 1, acc.LastIndexOf("-") - acc.IndexOf("-") - 1));
 
